@@ -2,6 +2,23 @@
     width: 1512px;
 }
 
+.label{
+    width: 1512px;
+    margin-top: 40px;
+    border-bottom: solid;
+    display: flex;
+}
+
+.label_1{
+    color: red;
+    margin: 0px 0px 0px 160px;
+}
+
+.label_2{
+    margin: 0px 100px;
+}
+
+
 .items{
     display:flex;
     flex-wrap: wrap;
@@ -10,6 +27,7 @@
 .item_card{
     margin: 38px 0px 38px 76px;
 }
+
 .image{
     width: 290px;
     height: 280px;

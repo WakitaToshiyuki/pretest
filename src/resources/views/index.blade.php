@@ -1,16 +1,17 @@
-@extends('layouts.app') @section('css')
+@extends('layouts.app') 
+@section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 @endsection 
 
 @section('content')
 <div class="layout">
     <table>
-        <tr>
+        <tr class="label">
             <th>
-                <p>おすすめ</p>
+                <p class="label_1">おすすめ</p>
             </th>
             <th>
-                <p>マイリスト</p>
+                <p class="label_2">マイリスト</p>
             </th>
         </tr>
         <tr class="items">

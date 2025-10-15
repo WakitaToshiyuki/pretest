@@ -12,16 +12,16 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="header__inner">
+  <header>
+    <div class="header">
       <table>
         <tr>
           <th>
-            <h1>COACHTECH</h1>
+            <h1 class="title">COACHTECH</h1>
           </th>
           <th>
-            <form action="" method="">
-              <input type="text">
+            <form  action="" method="">
+              <input class="search" type="text">
             </form>
           </th>
           <th>
