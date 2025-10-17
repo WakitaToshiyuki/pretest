@@ -12,32 +12,57 @@
 </head>
 
 <body>
-  <header>
-    <div class="header">
-      <table>
-        <tr>
-          <th>
-            <h1 class="title">COACHTECH</h1>
-          </th>
-          <th>
-            <form  action="" method="">
-              <input class="search" type="text">
-            </form>
-          </th>
-          <th>
-            <a href="">ログイン</a>
-          </th>
-          <th>
-            <a href="">マイページ</a>
-          </th>
-          <th><button>出品</button></th>
-        </tr>
-      </table>
-    </div>
-  </header>
-  <main>
+<header>
+  <div class="header">
+    <table>
+      <tr>
+        <th>
+          <h1 class="title">COACHTECH</h1>
+        </th>
+        @if(Auth::check())
+        <th>
+          <form  action="" method="">
+          @csrf
+            <input class="search" type="text">
+          </form>
+        </th>
+        <th>
+          <form action="/logout" method="post">
+          @csrf
+            <button class="header-nav__button">ログアウト</button>
+          </form>
+        </th>
+        <th>
+          <a href="">マイページ</a>
+        </th>
+        <th>
+          <button>出品</button>
+        </th>
+        @else
+        <th>
+          <form  action="" method="">
+          @csrf
+            <input class="search" type="text">
+          </form>
+        </th>
+        <th>
+          <a href="">ログイン</a>
+        </th>
+        <th>
+          <a href="">マイページ</a>
+        </th>
+        <th>
+          <button>出品</button>
+        </th>
+        @endif
+      </tr>
+    </table>
+
+  </div>
+</header>
+<main>
   @yield('content')
-  </main>
+</main>
 </body>
 
 </html>

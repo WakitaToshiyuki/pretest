@@ -11,4 +11,13 @@ class ItemController extends Controller
         $items=Item::all();
         return view('index', ['items' => $items]);
     }
+
+    public function login(){
+        return view('login');
+    }
+
+    public function register(){
+        return view('register');
+    }
+
 }
