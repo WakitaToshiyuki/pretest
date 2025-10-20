@@ -46,10 +46,10 @@
           </form>
         </th>
         <th>
-          <a href="">ログイン</a>
+          <a href="/login">ログイン</a>
         </th>
         <th>
-          <a href="">マイページ</a>
+          <a href="/mypage">マイページ</a>
         </th>
         <th>
           <button>出品</button>
