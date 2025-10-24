@@ -26,6 +26,7 @@ class ItemController extends Controller
     }
 
     public function logout(){
+        $items=Item::all();
         return view('index',['items'=>$items]);
         // return redirect('/');
     }
@@ -45,7 +46,14 @@ class ItemController extends Controller
     }
 
     public function mypage(){
-        return view('profile');
+        $items=Item::all();
+        return view('profile',['items'=>$items]);
+    }
+
+
+    public function detail(){
+        $items=Item::all();
+        return view('detail',['items'=>$items]);
     }
 
 }

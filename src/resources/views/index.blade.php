@@ -17,10 +17,12 @@
         <tr class="items">
             @foreach ($items as $item)
             <td>
-                <div class="item_card">
-                    <img class="image" src="{{$item->image}}" alt="代替テキスト">
-                    <p>{{$item->name}}</p>
-                </div>
+                <a href="/item/{item_id}">
+                    <div class="item_card">
+                        <img class="image" src="{{$item->image}}" alt="代替テキスト">
+                        <p>{{$item->name}}</p>
+                    </div>
+                </a>
             </td>
             @endforeach
         </tr>

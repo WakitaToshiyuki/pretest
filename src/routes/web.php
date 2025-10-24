@@ -25,11 +25,14 @@ Route::get('/register',[ItemController::class,'register']);
 Route::post('/register',[ItemController::class,'save']);
 Route::post('/logout',[ItemController::class,'logout']);
 
+Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+Route::get('/mypage', [ItemController::class, 'mypage']);
+
 Route::middleware('auth')->group(function () {
     // Route::get('/purchase/{item_id}', [ItemController::class, '']);
     // Route::get('/purchase/address/{item_id}', [ItemController::class, '']);
     // Route::get('/sell', [ItemController::class, '']);
-    Route::get('/mypage', [ItemController::class, 'mypage']);
+    // Route::get('/mypage', [ItemController::class, 'mypage']);   lll
     // Route::get('/mypage/profile', [ItemController::class, '']);
     // Route::get('/mypage?page=buy', [ItemController::class, '']);
     // Route::get('/mypage?page=sell', [ItemController::class, '']);
