@@ -20,9 +20,10 @@ Route::get('/', [ItemController::class, 'index']);
 // });
 
 Route::get('/login',[ItemController::class,'login'])->name('login');
-Route::post('/login',[ItemController::class,'login']);
+Route::post('/login',[ItemController::class,'check']);
 Route::get('/register',[ItemController::class,'register']);
-Route::post('/register',[ItemController::class,'register']);
+Route::post('/register',[ItemController::class,'save']);
+Route::post('/logout',[ItemController::class,'logout']);
 
 Route::middleware('auth')->group(function () {
     // Route::get('/purchase/{item_id}', [ItemController::class, '']);

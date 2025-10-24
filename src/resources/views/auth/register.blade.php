@@ -32,23 +32,38 @@
             <div>
                 <h4>ユーザー名</h4>
                 <input type="text" name="name" value="{{ old('name') }}" />
+                <div class="form__error">
+                    @error('name')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div>
                 <h4>メールアドレス</h4>
                 <input type="email" name="email" value="{{ old('email') }}" />
+                <div class="form__error">
+                    @error('email')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div>
                 <h4>パスワード</h4>
                 <input type="password" name="password" />
+                <div class="form__error">
+                    @error('password')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div>
                 <h4>確認用パスワード</h4>
                 <input type="password" name="password_confirmation" />
             </div>
             <div>
-                <button>登録する</button>
+                <button class="" type="submit">登録する</button>
                 <div>
-                    <a href="">ログインはこちら</a>
+                    <a href="/login">ログインはこちら</a>
                 </div>
             </div>
         </form>

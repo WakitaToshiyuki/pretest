@@ -32,15 +32,25 @@
             <div>
                 <h4>メールアドレス</h4>
                 <input type="email" name="email" value="{{ old('email') }}" />
+                <div class="form__error">
+                    @error('email')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div>
                 <h4>パスワード</h4>
                 <input type="password" name="password" />
+                <div class="form__error">
+                    @error('password')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             <div>
-                <button>ログインする</button>
+                <button class="" type="submit">ログインする</button>
                 <div>
-                    <a href="">会員登録はこちら</a>
+                    <a href="/register">会員登録はこちら</a>
                 </div>
             </div>
         </form>
