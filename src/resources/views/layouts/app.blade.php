@@ -36,7 +36,7 @@
           <a href="">マイページ</a>
         </th>
         <th>
-          <button>出品</button>
+          <a href="">出品</a>
         </th>
         @else
         <th>
@@ -52,7 +52,7 @@
           <a href="/mypage">マイページ</a>
         </th>
         <th>
-          <button>出品</button>
+          <a href="/sell">出品</a>
         </th>
         @endif
       </tr>

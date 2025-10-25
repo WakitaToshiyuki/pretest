@@ -17,7 +17,7 @@
         <tr class="items">
             @foreach ($items as $item)
             <td>
-                <a href="/item/{item_id}">
+                <a href="/item/{$item->id}">
                     <div class="item_card">
                         <img class="image" src="{{$item->image}}" alt="代替テキスト">
                         <p>{{$item->name}}</p>

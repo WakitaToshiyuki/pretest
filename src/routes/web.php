@@ -25,8 +25,12 @@ Route::get('/register',[ItemController::class,'register']);
 Route::post('/register',[ItemController::class,'save']);
 Route::post('/logout',[ItemController::class,'logout']);
 
-Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+// 仮組 ↓
+
+Route::get('/item/{$item->id}', [ItemController::class, 'detail']);
+// Route::get('/item/{item_id}', [ItemController::class, 'detail']);
 Route::get('/mypage', [ItemController::class, 'mypage']);
+Route::get('/sell', [ItemController::class, 'sell']);
 
 Route::middleware('auth')->group(function () {
     // Route::get('/purchase/{item_id}', [ItemController::class, '']);
