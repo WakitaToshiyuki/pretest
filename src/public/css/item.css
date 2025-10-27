@@ -1,0 +1,14 @@
+.checkbox{
+    margin-right: 5px;
+}
+
+.button{
+    display: none;
+}
+
+.word{
+    color: #FF5655;
+    border: 1px solid #FF5655;
+    border-radius: 20px;
+    padding: 5px 20px;
+}

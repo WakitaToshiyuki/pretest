@@ -5,13 +5,13 @@
 
 @section('content')
 <div>
-    <form action="">
+    <form action="" method="post">
     @csrf
         <h1>商品の出品</h1>
         <div>
             <h4>商品画像</h4>
             <div>
-                <button>画像を選択する</button>
+                <input type="file">
             </div>
         </div>
         <div>
@@ -20,11 +20,57 @@
             </div>
             <div>
                 <h4>カテゴリー</h4>
-                <input type="text">
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="ファッション" class="button"><span class="word">ファッション</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="家電" class="button"><span class="word">家電</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="インテリア" class="button"><span class="word">インテリア</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="レディース" class="button"><span class="word">レディース</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="メンズ" class="button"><span class="word">メンズ</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="コスメ" class="button"><span class="word">コスメ</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="本" class="button"><span class="word">本</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="ゲーム" class="button"><span class="word">ゲーム</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="スポーツ" class="button"><span class="word">スポーツ</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="キッチン" class="button"><span class="word">キッチン</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="ハンドメイド" class="button"><span class="word">ハンドメイド</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="アクセサリー" class="button"><span class="word">アクセサリー</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="おもちゃ"><span class="word" class="button">おもちゃ</span>
+                </label>
+                <label for="" class="chechbox">
+                    <input type="checkbox" name="category" value="ベビー・キッズ" class="button"><span class="word">ベビー・キッズ</span>
+                </label>
             </div>
             <div>
                 <h4>商品の状態</h4>
-                <input type="text">
+                <select name="quality" >
+                    <option value="良好">良好</option>
+                    <option value="目立った傷や汚れなし">目立った傷や汚れなし</option>
+                    <option value="やや傷や汚れあり">やや傷や汚れあり</option>
+                    <option value="状態が悪い">状態が悪い</option>
+                </select>
             </div>
         </div>
         <div>
@@ -45,7 +91,7 @@
             </div>
             <div>
                 <h4>販売価格</h4>
-                <input type="text">
+                <input type="number">
             </div>
         </div>
         <button></button>
