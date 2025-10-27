@@ -4,7 +4,7 @@
 @endsection 
 
 @section('content')
-<div>
+<div class="layout">
     <form action="" method="post">
     @csrf
         <h1>商品の出品</h1>
@@ -94,7 +94,7 @@
                 <input type="number">
             </div>
         </div>
-        <button></button>
+        <button>出品する</button>
     </form>
 </div>
 
