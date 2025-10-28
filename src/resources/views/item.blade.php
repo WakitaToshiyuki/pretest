@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="layout">
-    <form action="" method="post">
+    <form action="" method="post" class="form">
     @csrf
         <h1>商品の出品</h1>
         <div>
@@ -57,7 +57,7 @@
                     <input type="checkbox" name="category" value="アクセサリー" class="button"><span class="word">アクセサリー</span>
                 </label>
                 <label for="" class="chechbox">
-                    <input type="checkbox" name="category" value="おもちゃ"><span class="word" class="button">おもちゃ</span>
+                    <input type="checkbox" name="category" value="おもちゃ" class="button"><span class="word">おもちゃ</span>
                 </label>
                 <label for="" class="chechbox">
                     <input type="checkbox" name="category" value="ベビー・キッズ" class="button"><span class="word">ベビー・キッズ</span>
