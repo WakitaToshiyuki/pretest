@@ -4,20 +4,24 @@
 @endsection 
 
 @section('content')
-<div>
+<div class="layout">
     <table>
-        <tr>
-            <th></th>
+        <tr class="label">
+            <th>
+                <div class="circle">
+                    <img class="profile" src="" alt="">
+                </div>
+            </th>
             <th>ユーザー名</th>
             <th>
-                <button>プロフィールを編集</button>
+                <a href="/mypage/profile">プロフィールを編集</a>
             </th>
         </tr>
         <tr>
             <th>出品した商品</th>
             <th>購入した商品</th>
         </tr>
-        <tr>
+        <tr class="item">
             @foreach ($items as $item)
             <td>
                 <div class="item_card">

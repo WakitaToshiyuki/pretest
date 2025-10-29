@@ -1,0 +1,30 @@
+.layout{
+    width: 1512px;
+}
+
+.label{
+    width: 1017px;
+    height: 150px;
+    display: flex;
+}
+
+.circle{
+    width: 150px;
+    height: 150px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.item{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.item_card{
+    margin: 38px 0px 38px 76px;
+}
+
+.image{
+    width: 290px;
+    height: 280px;
+}

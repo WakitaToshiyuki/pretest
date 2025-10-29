@@ -7,7 +7,7 @@
 <div class="layout">
     <form action="" method="post" class="form">
     @csrf
-        <h1>商品の出品</h1>
+        <h1 class="title">商品の出品</h1>
         <div>
             <h4>商品画像</h4>
             <div>

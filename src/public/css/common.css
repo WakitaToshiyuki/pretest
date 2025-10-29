@@ -6,9 +6,13 @@
 
 .title{
     color: white;
+    padding: auto 0px;
+    margin: 0px auto;
 }
 
 .search{
     width: 500px;
     height: 50px;
+    padding: auto 0px;
+    margin: 0px auto;
 }

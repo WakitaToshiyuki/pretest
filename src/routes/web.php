@@ -29,15 +29,17 @@ Route::post('/logout',[ItemController::class,'logout']);
 
 Route::get('/item/{$item->id}', [ItemController::class, 'detail']);
 // Route::get('/item/{item_id}', [ItemController::class, 'detail']);
-Route::get('/mypage', [ItemController::class, 'mypage']);
-Route::get('/sell', [ItemController::class, 'sell']);
+// Route::get('/mypage', [ItemController::class, 'mypage']);
+// Route::get('/sell', [ItemController::class, 'sell']);
+// Route::get('/mypage/profile', [ItemController::class, 'edit']);
+// Route::get('/purchase/{item_id}', [ItemController::class, 'buy']);
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/purchase/{item_id}', [ItemController::class, '']);
-    // Route::get('/purchase/address/{item_id}', [ItemController::class, '']);
-    // Route::get('/sell', [ItemController::class, '']);
-    // Route::get('/mypage', [ItemController::class, 'mypage']);   lll
-    // Route::get('/mypage/profile', [ItemController::class, '']);
-    // Route::get('/mypage?page=buy', [ItemController::class, '']);
-    // Route::get('/mypage?page=sell', [ItemController::class, '']);
+    Route::get('/purchase/{item_id}', [ItemController::class, 'buy']);
+    Route::get('/purchase/address/{item_id}', [ItemController::class, '']);
+    Route::get('/sell', [ItemController::class, 'sell']);
+    Route::get('/mypage', [ItemController::class, 'mypage']);
+    Route::get('/mypage/profile', [ItemController::class, 'edit']);
+    Route::get('/mypage?page=buy', [ItemController::class, '']);
+    Route::get('/mypage?page=sell', [ItemController::class, '']);
 });

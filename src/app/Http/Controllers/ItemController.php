@@ -20,6 +20,7 @@ class ItemController extends Controller
 
     public function check(Request $request){
         $credentials=$request->only('email', 'password');
+        // dd($credentials);
         if(Auth::attempt($credentials)){
             return redirect('/');
         }
@@ -27,8 +28,7 @@ class ItemController extends Controller
 
     public function logout(){
         $items=Item::all();
-        return view('index',['items'=>$items]);
-        // return redirect('/');
+        return redirect('/');
     }
 
     public function register(){
@@ -59,6 +59,14 @@ class ItemController extends Controller
 
     public function sell(){
         return view('item');
+    }
+
+    public function edit(){
+        return view('edit');
+    }
+
+    public function buy(){
+        return view('buy');
     }
 
 }
