@@ -13,6 +13,10 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 
+// 仮↓
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 class FortifyServiceProvider extends ServiceProvider
 {
     /**
@@ -42,5 +46,18 @@ class FortifyServiceProvider extends ServiceProvider
             $email = (string) $request->email;
             return Limit::perMinute(10)->by($email . $request->ip());
         });
+
+        // 仮↓
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user && Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+            // dd(Hash::check($request->password, $user->password));
+            dd($user);
+            return null;
+        });
+
     }
 }

@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Item;
+
+// 仮↓
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Auth\Middleware\Authenticate as Middleware;
+// use Laravel\Fortify\Features;
 
 class ItemController extends Controller
 {
@@ -20,8 +24,9 @@ class ItemController extends Controller
 
     public function check(Request $request){
         $credentials=$request->only('email', 'password');
-        // dd($credentials);
+
         if(Auth::attempt($credentials)){
+            dd($credentials);
             return redirect('/');
         }
     }
@@ -39,7 +44,7 @@ class ItemController extends Controller
         $form=[
             'name'=>$request->name,
             'email'=>$request->email,
-            'password'=>$request->password,
+            'password'=>Hash::make($request->password),
         ];
         User::create($form);
         return redirect('/login');
