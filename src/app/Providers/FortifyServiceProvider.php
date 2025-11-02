@@ -55,7 +55,7 @@ class FortifyServiceProvider extends ServiceProvider
                 return $user;
             }
             // dd(Hash::check($request->password, $user->password));
-            dd($user);
+            // dd($user);
             return null;
         });
 

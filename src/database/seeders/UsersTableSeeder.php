@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+// 仮↓
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $param=[
             'name'=>'テスト',
             'email'=>'pretest@gmail.com',
-            'password'=>'pretest1',
+            'password'=>Hash::make('pretest1'),
         ];
         DB::table('users')->insert($param);
     }
