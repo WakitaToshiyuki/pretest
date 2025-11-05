@@ -17,7 +17,7 @@
         <tr class="items">
             @foreach ($items as $item)
             <td>
-                <a href="/item/{$item->id}">
+                <a href="{{ route('detail',['item_id'=>$item->id]) }}">
                     <div class="item_card">
                         <img class="image" src="{{$item->image}}" alt="代替テキスト">
                         <p>{{$item->name}}</p>

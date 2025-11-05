@@ -33,10 +33,10 @@
           </form>
         </th>
         <th>
-          <a href="">マイページ</a>
+          <a href="/mypage">マイページ</a>
         </th>
         <th>
-          <a href="">出品</a>
+          <a href="/sell">出品</a>
         </th>
         @else
         <th>

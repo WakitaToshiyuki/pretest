@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 // use Illuminate\Database\Eloquent\Model;
-
-// 仮↓
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -13,7 +11,6 @@ use Illuminate\Notifications\Notifiable;
 // ModelをAuthenticatableにした
 class User extends Authenticatable
 {
-    // 仮↓
     use Notifiable;
 
 

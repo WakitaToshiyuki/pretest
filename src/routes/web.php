@@ -27,8 +27,8 @@ Route::get('/register',[ItemController::class,'register']);
 
 // 仮組 ↓
 
-Route::get('/item/{$item->id}', [ItemController::class, 'detail']);
-// Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+// Route::get('/item/{$item->id}', [ItemController::class, 'detail']);
+Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
 // Route::get('/mypage', [ItemController::class, 'mypage']);
 // Route::get('/sell', [ItemController::class, 'sell']);
 // Route::get('/mypage/profile', [ItemController::class, 'edit']);

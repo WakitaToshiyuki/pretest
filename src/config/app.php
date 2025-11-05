@@ -176,7 +176,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
 
-        // 仮↓
         Laravel\Fortify\FortifyServiceProvider::class,
 
     ],

@@ -56,10 +56,14 @@ class ItemController extends Controller
     }
 
 
-    public function detail(Request $request){
-        $item=Item::find($request->id);
+    public function detail($item_id){
+        // $item=Item::find($request->id);
         // $items=Item::all();
-        return view('detail',['item'=>$item]);
+        // return view('detail',['item'=>$item]);
+
+        // 仮↓
+        $item = Item::findOrFail($item_id);
+        return view('detail', compact('item'));
     }
 
     public function sell(){

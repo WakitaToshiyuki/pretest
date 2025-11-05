@@ -1,0 +1,27 @@
+.layout{
+    width: 1512px;
+}
+
+.flame{
+    margin-top: 95px;
+    margin-left: 66px;
+    width: 1380px;
+    height: 1702px;
+    display: flex;
+}
+
+.flame_left{
+    width: 690px;
+    height: 1702px;
+}
+
+.flame_right{
+    width: 690px;
+    /* height: 1702px; */
+    border: solid 4px;
+}
+
+.image{
+    width: 600px;
+    /* height: 600px; */
+}
