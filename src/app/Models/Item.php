@@ -13,11 +13,11 @@ class Item extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function goods() {
-        return $this->hasMany(Good::class);
+    public function likes() {
+        return $this->hasMany(Like::class);
     }
     public function isLikedBy(User $user) {
-        return $this->goodss()->where('user_id', $user->id)->exists();
+        return $this->likes()->where('user_id', $user->id)->exists();
     }
 
 }

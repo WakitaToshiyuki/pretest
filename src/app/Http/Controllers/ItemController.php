@@ -55,17 +55,13 @@ class ItemController extends Controller
         return view('profile',['items'=>$items]);
     }
 
-
     public function detail($item_id){
-        // $item=Item::find($request->id);
-        // $items=Item::all();
-        // return view('detail',['item'=>$item]);
-
-        // 仮↓
         $item = Item::findOrFail($item_id);
         return view('detail', compact('item'));
     }
 
+
+    // 仮↓
     public function sell(){
         return view('item');
     }
@@ -77,5 +73,33 @@ class ItemController extends Controller
     public function buy(){
         return view('buy');
     }
+
+    public function toggleLike(Item $item){
+        $id = $item -> id;
+        // Item::withCount('likes')->find($id);
+        // $items = Item::withCount('likes')->get();
+        // return view('items.index', compact('items'));
+        dd($id);
+
+        $user = auth()->user();
+        if ($item->isLikedBy($user)) {
+            // すでにいいねしている → 削除
+            $item->likes()->where('user_id', $user->id)->delete();
+            $status = 'unliked';
+        } 
+        else {
+            // まだいいねしていない → 追加
+            $item->likes()->create([
+                'user_id' => $user->id,
+                // 'item_id' => $item->id,
+            ]);
+            $status = 'liked';
+        }
+        return response()->json([
+            'status' => $status,
+            'like_count' => $item->likes()->count(),
+        ]);
+    }
+
 
 }

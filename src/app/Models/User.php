@@ -17,8 +17,8 @@ class User extends Authenticatable
     use HasFactory;
     protected $fillable=['name','email','password'];
 
-    public function goods() {
-        return $this->hasMany(Good::class);
+    public function likes() {
+        return $this->hasMany(Like::class);
     }
 
 }
