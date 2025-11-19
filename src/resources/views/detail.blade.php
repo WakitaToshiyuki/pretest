@@ -22,14 +22,11 @@
             </div>
             <div class="like">
                 <form action="{{ route('like',['item_id'=>$item->id]) }}" method="POST">
-                <!-- <form action="/item/{item_id},['item_id'=>$item->id]" method="POST"> -->
                     @csrf
                     <button type="submit" id="like-button" item_id="{{ $item->id }}">
                         {{ $item->likes()->count() }} いいね
                     </button>
                 </form>
-                
-
             </div>
             <div class="button">購入手続きへ</div>
             <div class="item_detail">
@@ -43,7 +40,7 @@
                 </div>
             </div>
             <div class="comment">
-                <form action="">
+                <form action="" method="POST">
                 @csrf
                     <p>コメント()</p>
                     
@@ -55,9 +52,9 @@
                     <p class="">
                         商品へのコメント
                     </p>
-                    <textarea name="" id=""></textarea>
+                    <textarea name="comment"></textarea>
                     <div class="">
-                        <button>コメントを送信する</button>
+                        <button type="submit">コメントを送信する</button>
                     </div>
                 </form>
             </div>

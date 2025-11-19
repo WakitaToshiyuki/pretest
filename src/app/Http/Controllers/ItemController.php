@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Item;
+use App\Models\Comment;
 
 // 仮↓
 use Illuminate\Support\Facades\Auth;
@@ -74,32 +75,31 @@ class ItemController extends Controller
         return view('buy');
     }
 
-    public function toggleLike(Item $item){
-        $id = $item -> id;
-        // Item::withCount('likes')->find($id);
-        // $items = Item::withCount('likes')->get();
-        // return view('items.index', compact('items'));
-        dd($id);
-
+    public function toggleLike($item_id){
+        $item = Item::findOrFail($item_id);
         $user = auth()->user();
         if ($item->isLikedBy($user)) {
             // すでにいいねしている → 削除
             $item->likes()->where('user_id', $user->id)->delete();
-            $status = 'unliked';
         } 
         else {
             // まだいいねしていない → 追加
             $item->likes()->create([
                 'user_id' => $user->id,
-                // 'item_id' => $item->id,
             ]);
-            $status = 'liked';
         }
-        return response()->json([
-            'status' => $status,
-            'like_count' => $item->likes()->count(),
-        ]);
+        return redirect()->route('detail', ['item_id' => $item->id])->with(compact('item'));
     }
 
-
+    public function comment($item_id,$request){
+        $item = Item::findOrFail($item_id);
+        $user = auth()->user();
+        $form = [
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+            'comment' => $request->comment,
+        ];
+        Comment::create($form);
+        return redirect()->route('detail', ['item_id' => $item->id])->with(compact('item'));
+    }
 }

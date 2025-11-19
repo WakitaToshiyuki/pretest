@@ -17,7 +17,9 @@
     <table>
       <tr>
         <th>
-          <h1 class="title">COACHTECH</h1>
+          <a href="/">
+            <h1 class="title">COACHTECH</h1>
+          </a>
         </th>
         @if(Auth::check())
         <th>
