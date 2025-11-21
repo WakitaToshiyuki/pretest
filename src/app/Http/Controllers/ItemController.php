@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Comment;
-
 // 仮↓
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Auth\Middleware\Authenticate as Middleware;
-// use Laravel\Fortify\Features;
 
 class ItemController extends Controller
 {
@@ -91,7 +88,7 @@ class ItemController extends Controller
         return redirect()->route('detail', ['item_id' => $item->id])->with(compact('item'));
     }
 
-    public function comment($item_id,$request){
+    public function comment($item_id,Request $request){
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $form = [

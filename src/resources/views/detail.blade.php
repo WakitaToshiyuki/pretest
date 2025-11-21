@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="comment">
-                <form action="" method="POST">
+                <form action="{{ route('comment',['item_id'=>$item->id]) }}" method="POST">
                 @csrf
                     <p>コメント()</p>
                     

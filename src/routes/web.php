@@ -42,9 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage/profile', [ItemController::class, 'edit']);
     Route::get('/mypage?page=buy', [ItemController::class, '']);
     Route::get('/mypage?page=sell', [ItemController::class, '']);
-    Route::post('/item/{item_id}', [ItemController::class, 'toggleLike'])->name('like');
+    Route::post('/item/{item_id}/like', [ItemController::class, 'toggleLike'])->name('like');
     // 仮↓
-    // Route::post('/item/{item_id}', [ItemController::class, 'comment'])->name('comment');
+    Route::post('/item/{item_id}/comment', [ItemController::class, 'comment'])->name('comment');
 });
 
 // Route::post('/posts/{post}/like', [ItemController::class, 'toggleLike'])->middleware('auth');
