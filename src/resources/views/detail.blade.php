@@ -42,11 +42,21 @@
             <div class="comment">
                 <form action="{{ route('comment',['item_id'=>$item->id]) }}" method="POST">
                 @csrf
-                    <p>コメント()</p>
+                    <p>コメント({{ $item->comments()->count() }})</p>
                     
                     <div class="others">
-                        <div class=""></div>
-                        <div class=""></div>
+                        @foreach ($comments as $comment)
+                        <div class="">
+                            <p>
+                                {{$comment->user->name}}
+                            </p>
+                        </div>
+                        <div class="">
+                            <p>
+                                {{$comment->comment}}
+                            </p>
+                        </div>
+                        @endforeach
                     </div>
                     
                     <p class="">
