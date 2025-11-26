@@ -106,7 +106,7 @@
             </div>
             <div>
                 <h4>販売価格</h4>
-                <input type="number">
+                <input type="number" min="0" placeholder="￥">
             </div>
         </div>
         <button>出品する</button>

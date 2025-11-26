@@ -28,7 +28,9 @@
                     </button>
                 </form>
             </div>
-            <div class="button">購入手続きへ</div>
+            <div class="button">
+                <a href="{{ route('buy',['item_id'=>$item->id]) }}">購入手続きへ</a>
+            </div>
             <div class="item_detail">
                 <p>{{$item->explanation}}</p>
             </div>

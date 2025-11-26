@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Item;
 use App\Models\Comment;
+use App\Models\Profile;
 // 仮↓
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +46,7 @@ class ItemController extends Controller
             'password'=>Hash::make($request->password),
         ];
         User::create($form);
-        return redirect('/login');
+        return redirect('/mypage/profile');
     }
 
     public function mypage(){
@@ -69,8 +70,11 @@ class ItemController extends Controller
         return view('edit');
     }
 
-    public function buy(){
-        return view('buy');
+    public function buy($item_id){
+        $item = Item::findOrFail($item_id);
+        $user = auth()->user();
+        $profile = $user->profile;
+        return view('buy',compact('item','profile'));
     }
 
     public function toggleLike($item_id){

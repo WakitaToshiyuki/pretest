@@ -15,27 +15,13 @@ use App\Http\Controllers\ItemController;
 */
 
 Route::get('/', [ItemController::class, 'index']);
-// Route::middleware('auth')->group(function () {
-//     Route::get('/', [ItemController::class, 'index']);
-// });
-
 Route::get('/login',[ItemController::class,'login'])->name('login');
-// Route::post('/login',[ItemController::class,'check']);
 Route::get('/register',[ItemController::class,'register']);
-// Route::post('/register',[ItemController::class,'save']);
-// Route::post('/logout',[ItemController::class,'logout']);
-
-// 仮組 ↓
-
-// Route::get('/item/{$item->id}', [ItemController::class, 'detail']);
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
-// Route::get('/mypage', [ItemController::class, 'mypage']);
-// Route::get('/sell', [ItemController::class, 'sell']);
-// Route::get('/mypage/profile', [ItemController::class, 'edit']);
-// Route::get('/purchase/{item_id}', [ItemController::class, 'buy']);
 
+//仮↓
 Route::middleware('auth')->group(function () {
-    Route::get('/purchase/{item_id}', [ItemController::class, 'buy']);
+    Route::get('/purchase/{item_id}', [ItemController::class, 'buy'])->name('buy');
     Route::get('/purchase/address/{item_id}', [ItemController::class, '']);
     Route::get('/sell', [ItemController::class, 'sell']);
     Route::get('/mypage', [ItemController::class, 'mypage']);
@@ -43,8 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage?page=buy', [ItemController::class, '']);
     Route::get('/mypage?page=sell', [ItemController::class, '']);
     Route::post('/item/{item_id}/like', [ItemController::class, 'toggleLike'])->name('like');
-    // 仮↓
     Route::post('/item/{item_id}/comment', [ItemController::class, 'comment'])->name('comment');
 });
 
-// Route::post('/posts/{post}/like', [ItemController::class, 'toggleLike'])->middleware('auth');
