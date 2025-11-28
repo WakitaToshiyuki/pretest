@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Profile;
 // 仮↓
 use Illuminate\Support\Facades\Auth;
+use App\Actions\Fortify\CreateNewUser;
 
 class ItemController extends Controller
 {
@@ -21,31 +22,27 @@ class ItemController extends Controller
         return view('auth.login');
     }
 
-    public function check(Request $request){
-        $credentials=$request->only('email', 'password');
+    // public function check(Request $request){
+    //     $credentials=$request->only('email', 'password');
 
-        if(Auth::attempt($credentials)){
-            dd($credentials);
-            return redirect('/');
-        }
-    }
+    //     if(Auth::attempt($credentials)){
+    //         dd($credentials);
+    //         return redirect('/');
+    //     }
+    // }
 
-    public function logout(){
-        $items=Item::all();
-        return redirect('/');
-    }
+    // public function logout(){
+    //     $items=Item::all();
+    //     return redirect('/');
+    // }
 
     public function register(){
         return view('auth.register');
     }
 
-    public function save(Request $request){
-        $form=[
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>Hash::make($request->password),
-        ];
-        User::create($form);
+    public function save(Request $request, CreateNewUser $creator){
+        $user = $creator->create($request->all());
+        Auth::login($user);
         return redirect('/mypage/profile');
     }
 

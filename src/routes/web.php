@@ -17,6 +17,7 @@ use App\Http\Controllers\ItemController;
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/login',[ItemController::class,'login'])->name('login');
 Route::get('/register',[ItemController::class,'register']);
+Route::post('/register',[ItemController::class,'save'])->name('register');
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
 
 //仮↓

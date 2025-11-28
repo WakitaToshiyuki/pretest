@@ -53,10 +53,10 @@ class FortifyServiceProvider extends ServiceProvider
             if ($user && Hash::check($request->password, $user->password)) {
                 return $user;
             }
-            // dd(Hash::check($request->password, $user->password));
-            // dd($user);
             return null;
         });
+
+        Fortify::redirects('/');
 
     }
 }
