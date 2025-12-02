@@ -66,7 +66,7 @@ class ItemController extends Controller
     public function edit(){
         $user = auth()->user();
         $profile = $user->profile;
-        return view('edit');
+        return view('edit',compact('user','profile',));
     }
 
     public function update(Request $request){
@@ -86,8 +86,14 @@ class ItemController extends Controller
         $profile = Profile::find($user->id);
         if($profile){
             $profile->update($form);
+            $profile->user->update([
+                'name' => $profile->name,
+            ]);
         }else{
             Profile::create($form);
+            $user->update([
+                'name' => $request->name,
+            ]);
         }
         return redirect('/');
     }

@@ -14,14 +14,14 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected static function booted(){
-        static::updated(function ($profile) {
-            if ($profile->user) {
-                $profile->user->update([
-                    'name' => $profile->name,
-                ]);
-            }
-        });
-    }
+    // protected static function booted(){
+    //     static::updated(function ($profile) {
+    //         if ($profile->user) {
+    //             $profile->user->update([
+    //                 'name' => $profile->name,
+    //             ]);
+    //         }
+    //     });
+    // }
 
 }

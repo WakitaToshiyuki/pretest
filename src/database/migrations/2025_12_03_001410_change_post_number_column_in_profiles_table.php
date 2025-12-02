@@ -14,7 +14,7 @@ class ChangePostNumberColumnInProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            //
+            $table->string('post_number', 10)->change();
         });
     }
 

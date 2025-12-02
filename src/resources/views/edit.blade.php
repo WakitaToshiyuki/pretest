@@ -16,7 +16,7 @@
         </div>
         <div class="">
             <h4>ユーザー名</h4>
-            <input type="text" class="edit" name="name" value="{{ $profile->name ?? '' }}">
+            <input type="text" class="edit" name="name" value="{{ $user->name ?? '' }}">
         </div>
         <div class="">
             <h4>郵便番号</h4>
