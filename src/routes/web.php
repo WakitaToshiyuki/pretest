@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [ItemController::class, 'sell']);
     Route::get('/mypage', [ItemController::class, 'mypage']);
     Route::get('/mypage/profile', [ItemController::class, 'edit']);
+    Route::post('/mypage/profile', [ItemController::class, 'update']);
     Route::get('/mypage?page=buy', [ItemController::class, '']);
     Route::get('/mypage?page=sell', [ItemController::class, '']);
     Route::post('/item/{item_id}/like', [ItemController::class, 'toggleLike'])->name('like');

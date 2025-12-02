@@ -64,7 +64,32 @@ class ItemController extends Controller
     }
 
     public function edit(){
+        $user = auth()->user();
+        $profile = $user->profile;
         return view('edit');
+    }
+
+    public function update(Request $request){
+        $user = auth()->user();
+
+        $request->merge(['user_id'=>$user->id]);
+        $form = $request->all();
+        // $form = [
+        //     'user_id' => $user->id,
+        //     'name' => $request->name,
+        //     'post_number' => $request->post_number,
+        //     'address' => $request->address,
+        //     'building' => $request->building,
+        //     'image' => $request->image,
+        // ];
+        unset($form['_token']);
+        $profile = Profile::find($user->id);
+        if($profile){
+            $profile->update($form);
+        }else{
+            Profile::create($form);
+        }
+        return redirect('/');
     }
 
     public function buy($item_id){

@@ -13,4 +13,15 @@ class Profile extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    protected static function booted(){
+        static::updated(function ($profile) {
+            if ($profile->user) {
+                $profile->user->update([
+                    'name' => $profile->name,
+                ]);
+            }
+        });
+    }
+
 }

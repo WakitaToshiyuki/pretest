@@ -25,5 +25,15 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    // protected static function booted(){
+    //     static::created(function ($user) {
+    //         $user->profile()->create([
+    //             'name' => $user->name,
+    //             'user_id' =>$user->id,
+    //         ]);
+    //     });
+    // }
+
+
 
 }
