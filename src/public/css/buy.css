@@ -6,9 +6,8 @@
     margin-top: 95px;
     margin-left: 66px;
     width: 1380px;
-    height: 1702px;
+    /* height: 1702px; */
     display: flex;
-    border: solid 4px;
 }
 
 .flame_left{

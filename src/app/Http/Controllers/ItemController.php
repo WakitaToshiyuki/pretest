@@ -83,7 +83,8 @@ class ItemController extends Controller
         //     'image' => $request->image,
         // ];
         unset($form['_token']);
-        $profile = Profile::find($user->id);
+        $profile = Profile::where('user_id', $user->id)->first();
+        // $profile = $user->profile;
         if($profile){
             $profile->update($form);
             $profile->user->update([
