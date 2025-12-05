@@ -106,6 +106,20 @@ class ItemController extends Controller
         return view('buy',compact('item','profile'));
     }
 
+    public function address($item_id){
+        $item = Item::findOrFail($item_id);
+        $user = auth()->user();
+        $profile = $user->profile;
+        return view('address',compact('profile'));
+    }
+
+    public function change($item_id,Request $request){
+        $item = Item::findOrFail($item_id);
+        $user = auth()->user();
+        $profile = $user->profile;
+        return redirect('/purchase/{item_id}',compact('item','profile'));
+    }
+
     public function toggleLike($item_id){
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
