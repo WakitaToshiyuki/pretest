@@ -110,7 +110,7 @@ class ItemController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $profile = $user->profile;
-        return view('address',compact('profile'));
+        return view('address',compact('item','profile'));
     }
 
     public function change($item_id,Request $request){

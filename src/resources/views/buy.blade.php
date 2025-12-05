@@ -29,7 +29,7 @@
                 <div class="">
                     <div class="">
                         <h4>配送先</h4>
-                        <a href="/purchase/address/{item_id}">変更する</a>
+                        <a href="{{ route('address',['item_id'=>$item->id]) }}">変更する</a>
                     </div>
                     <div class="">
                         <p>〒</p>
