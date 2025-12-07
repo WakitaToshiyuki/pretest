@@ -33,11 +33,14 @@
                     </div>
                     <div class="">
                         <p>〒</p>
-                        <p name="post_number">{{$profile->post_number}}</p>
+                        <p>{{ $address['post_number'] ?? $profile->post_number }}</p>
+                        <input type="hidden" name="post_number" value="{{ $address['post_number'] ?? $profile->post_number }}">
                     </div>
                     <div class="">
-                        <p name="address">{{$profile->address}}</p>
-                        <p name="building">{{$profile->building}}</p>
+                        <p>{{ $address['address'] ?? $profile->address }}</p>
+                        <input type="hidden" name="address" value="{{ $address['address'] ?? $profile->address }}">
+                        <p>{{ $address['building'] ?? $profile->building }}</p>
+                        <input type="hidden" name="building" value="{{ $address['building'] ?? $profile->building }}">
                     </div>
                 </div>
             </div>

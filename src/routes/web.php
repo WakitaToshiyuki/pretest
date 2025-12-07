@@ -23,6 +23,7 @@ Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail')
 //仮↓
 Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}', [ItemController::class, 'buy'])->name('buy');
+    Route::post('/purchase/{item_id}', [ItemController::class, 'purchase']);
     Route::get('/purchase/address/{item_id}', [ItemController::class, 'address'])->name('address');
     Route::post('/purchase/address/{item_id}', [ItemController::class, 'change'])->name('change');
     Route::get('/sell', [ItemController::class, 'sell']);

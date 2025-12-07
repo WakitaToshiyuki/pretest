@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Profile;
+use App\Models\Purchase;
 // 仮↓
 use Illuminate\Support\Facades\Auth;
 use App\Actions\Fortify\CreateNewUser;
@@ -103,7 +104,24 @@ class ItemController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $profile = $user->profile;
-        return view('buy',compact('item','profile'));
+        $address = session('temp_data');
+        return view('buy',compact('item','profile','address'));
+    }
+
+    public function purchase($item_id,Request $request){
+        $item = Item::findOrFail($item_id);
+        $user = auth()->user();
+        $form =[
+            'user_id'=>$user->id,
+            'item_id'=>$item->id,
+            'method'=>$request->method,
+            'post_number'=>$request->post_number,
+            'address'=>$request->address,
+            'building'=>$request->building,
+        ];
+        dd($form);
+        Purchase::create($form);
+        return view('/');
     }
 
     public function address($item_id){
@@ -117,7 +135,14 @@ class ItemController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $profile = $user->profile;
-        return redirect('/purchase/{item_id}',compact('item','profile'));
+        session([
+            'temp_data' => [
+                'post_number' => $request->input('post_number'),
+                'address'=> $request->input('address'),
+                'building'=> $request->input('building'),
+            ]
+        ]);
+        return redirect()->route('buy', ['item_id' => $item->id]);
     }
 
     public function toggleLike($item_id){
