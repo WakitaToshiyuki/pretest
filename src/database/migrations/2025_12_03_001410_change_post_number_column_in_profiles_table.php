@@ -16,6 +16,10 @@ class ChangePostNumberColumnInProfilesTable extends Migration
         Schema::table('profiles', function (Blueprint $table) {
             $table->string('post_number', 10)->change();
         });
+
+        Schema::table('purchases', function (Blueprint $table) {
+            $table->string('post_number', 10)->change();
+        });
     }
 
     /**
@@ -26,6 +30,10 @@ class ChangePostNumberColumnInProfilesTable extends Migration
     public function down()
     {
         Schema::table('profiles', function (Blueprint $table) {
+            //
+        });
+
+        Schema::table('purchases', function (Blueprint $table) {
             //
         });
     }

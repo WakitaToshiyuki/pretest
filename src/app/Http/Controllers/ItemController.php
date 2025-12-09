@@ -119,7 +119,6 @@ class ItemController extends Controller
             'address'=>$request->address,
             'building'=>$request->building,
         ];
-        dd($form);
         Purchase::create($form);
         return view('/');
     }

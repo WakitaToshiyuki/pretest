@@ -19,7 +19,7 @@ class CreatePurchasesTable extends Migration
             $table->foreignId('item_id')->constrained()->cascadeOnDelete();
             $table->string('method');
             $table->string('address');
-            $table->integer('post_number');
+            $table->string('post_number',10)->change();
             $table->string('building')->nullable();
             $table->timestamps();
         });
