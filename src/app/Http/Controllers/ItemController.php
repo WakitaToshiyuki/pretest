@@ -63,6 +63,7 @@ class ItemController extends Controller
 
     // 仮↓
     public function sell(){
+        $user = auth()->user();
         return view('item');
     }
 
@@ -73,6 +74,7 @@ class ItemController extends Controller
             'name' => $request->name,
             'explanation' => $request->explanation,
             'price' => $request->price,
+            'quality' => $request->quality,
             'image' => $request->file('image')->store('public/images'),
             'brand' => $request->brand,
         ];
