@@ -8,9 +8,11 @@ use App\Models\Item;
 use App\Models\Comment;
 use App\Models\Profile;
 use App\Models\Purchase;
+use App\Models\Category;
 // 仮↓
 use Illuminate\Support\Facades\Auth;
 use App\Actions\Fortify\CreateNewUser;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -64,6 +66,26 @@ class ItemController extends Controller
         return view('item');
     }
 
+    public function sell_action(Request $request){
+        $user = auth()->user();
+        $form = [
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'explanation' => $request->explanation,
+            'price' => $request->price,
+            'image' => $request->file('image')->store('public/images'),
+            'brand' => $request->brand,
+        ];
+        $item = Item::create($form);
+        $categoryIds = [];
+        foreach ($request->category as $categoryName) {
+            $category = Category::firstOrCreate(['category' => $categoryName]);
+            $categoryIds[] = $category->id;
+        }
+        $item->categories()->sync($categoryIds);
+        return redirect('/');
+    }
+
     public function edit(){
         $user = auth()->user();
         $profile = $user->profile;
@@ -72,20 +94,23 @@ class ItemController extends Controller
 
     public function update(Request $request){
         $user = auth()->user();
-
-        $request->merge(['user_id'=>$user->id]);
-        $form = $request->all();
-        // $form = [
-        //     'user_id' => $user->id,
-        //     'name' => $request->name,
-        //     'post_number' => $request->post_number,
-        //     'address' => $request->address,
-        //     'building' => $request->building,
-        //     'image' => $request->image,
-        // ];
-        unset($form['_token']);
         $profile = Profile::where('user_id', $user->id)->first();
-        // $profile = $user->profile;
+        $form = [
+            'user_id' => $user->id,
+            'name' => $request->name,
+            'post_number' => $request->post_number,
+            'address' => $request->address,
+            'building' => $request->building,
+        ];
+        if ($request->hasFile('image')) {
+            if ($profile && $profile->image) {
+                Storage::delete($profile->image);
+            }
+            $form['image'] = $request->file('image')->store('public/images');
+        }else{
+            $form['image'] = $profile->image ?? null;
+        }
+        // unset($form['_token']);
         if($profile){
             $profile->update($form);
             $profile->user->update([
@@ -120,7 +145,7 @@ class ItemController extends Controller
             'building'=>$request->building,
         ];
         Purchase::create($form);
-        return view('/');
+        return redirect('/');
     }
 
     public function address($item_id){

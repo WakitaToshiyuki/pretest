@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="layout">
-    <form class="form" action="/mypage/profile" method="POST">
+    <form class="form" action="/mypage/profile" method="POST" enctype="multipart/form-data">
     @csrf
         <h1>プロフィール設定</h1>
         <div class="">

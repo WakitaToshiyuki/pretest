@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="layout">
-    <form action="" method="post" class="form">
+    <form action="" method="post" class="form" enctype="multipart/form-data">
     @csrf
         <h1 class="title">商品の出品</h1>
         <div>

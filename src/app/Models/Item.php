@@ -10,7 +10,7 @@ class Item extends Model
     use HasFactory;
     protected $fillable=['user_id','name','explanation','price','image','brand'];
     public function categories(): BelongsToMany{
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_item');
     }
 
     public function likes() {
