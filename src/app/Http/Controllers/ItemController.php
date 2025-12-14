@@ -69,13 +69,16 @@ class ItemController extends Controller
 
     public function sell_action(Request $request){
         $user = auth()->user();
+        $file = $request->file('image');
+        $filename = time() . '_' . $file->getClientOriginalName(); // 元の名前＋タイムスタンプで衝突防止
+        $file->storeAs('public/images', $filename);
         $form = [
             'user_id' => $user->id,
             'name' => $request->name,
             'explanation' => $request->explanation,
             'price' => $request->price,
             'quality' => $request->quality,
-            'image' => $request->file('image')->store('public/images'),
+            'image' => $filename,
             'brand' => $request->brand,
         ];
         $item = Item::create($form);
