@@ -23,9 +23,10 @@
         </th>
         @if(Auth::check())
         <th>
-          <form  action="" method="">
+          <form  action="/" method="POST">
           @csrf
-            <input class="search" type="text">
+            <input class="search" type="text" name="search_word" placeholder="なにをお探しですか？">
+            <input type="submit" value="探す">
           </form>
         </th>
         <th>
@@ -42,9 +43,10 @@
         </th>
         @else
         <th>
-          <form  action="" method="">
+          <form  action="/" method="POST">
           @csrf
-            <input class="search" type="text">
+            <input class="search" type="text" name="search_word" placeholder="なにをお探しですか？">
+            <input type="submit" value="探す">
           </form>
         </th>
         <th>

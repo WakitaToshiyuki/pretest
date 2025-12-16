@@ -8,7 +8,7 @@
 <div class="layout">
     <div class="flame">
         <div class="flame_left">
-            <img class="image" src="{{$item->image}}" alt="代替テキスト">
+            <img class="image" src="{{ asset('storage/images/' . $item->image) }}" alt="代替テキスト">
         </div>
         <div class="flame_right">
             <div class="name">

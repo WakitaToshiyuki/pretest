@@ -21,6 +21,14 @@ class ItemController extends Controller
         return view('index', ['items' => $items]);
     }
 
+    public function search(Request $request){
+        $search = $request->input("search_word");
+        $items=Item::where('name','LIKE',"%{$search}%")->get();
+        return view('index', ['items' => $items]);
+    }
+
+
+
     public function login(){
         return view('auth.login');
     }
