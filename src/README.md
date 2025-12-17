@@ -34,16 +34,21 @@ DB_PASSWORD=laravel_pass
 php artisan key:generate
 ```
 
-6. マイグレーションの実行
+6. Doctrine DBAL のインストール
+``` bash
+composer require doctrine/dbal
+```
+
+7. マイグレーションの実行
 ``` bash
 php artisan migrate
 ```
 
-7. シーディングの実行
+8. シーディングの実行
 ``` bash
 php artisan db:seed
 ```
-8. シンボリックリンク作成
+9. シンボリックリンク作成
 ``` bash
 php artisan storage:link
 ```
@@ -54,14 +59,11 @@ php artisan storage:link
 - MySQL8.0.26
 
 ## テーブル設計
-![alt](table_1.png)
-![alt](table_3.png)
+スプレッドシートに記載
 
 ## ER図
-![alt](er.png)
+スプレッドシートに記載
 
 ## URL
 - 開発環境：http://localhost/
 - phpMyAdmin:：http://localhost:8080/
-
-# auto_mogitate
