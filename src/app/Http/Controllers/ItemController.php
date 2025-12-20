@@ -65,7 +65,8 @@ class ItemController extends Controller
     public function detail($item_id){
         $item = Item::findOrFail($item_id);
         $comments = $item->comments;
-        return view('detail', compact('item','comments',));
+        $categories = $item->categories;
+        return view('detail', compact('item','comments','categories',));
     }
 
 

@@ -35,7 +35,12 @@
                 <p>{{$item->explanation}}</p>
             </div>
             <div class="item_info">
-                <div class="category"></div>
+                <div class="category">
+                    <p>カテゴリー</p>
+                    @foreach ($categories as $category)
+                        <p>{{$category ->category}}</p>
+                    @endforeach
+                </div>
                 <div class="quality">
                     <p>商品の状態</p>
                     <p>{{$item->quality}}</p>
