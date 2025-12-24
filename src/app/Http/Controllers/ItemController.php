@@ -13,6 +13,12 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\AddressRequest;
+use App\Http\Requests\CommentRequest;
+use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PurchaseRequest;
 
 class ItemController extends Controller
 {
@@ -69,17 +75,15 @@ class ItemController extends Controller
         return view('detail', compact('item','comments','categories',));
     }
 
-
-    // 仮↓
     public function sell(){
         $user = auth()->user();
         return view('item');
     }
 
-    public function sell_action(Request $request){
+    public function sell_action(ExhibitionRequest $request){
         $user = auth()->user();
         $file = $request->file('image');
-        $filename = time() . '_' . $file->getClientOriginalName(); // 元の名前＋タイムスタンプで衝突防止
+        $filename = time() . '_' . $file->getClientOriginalName(); 
         $file->storeAs('public/images', $filename);
         $form = [
             'user_id' => $user->id,
