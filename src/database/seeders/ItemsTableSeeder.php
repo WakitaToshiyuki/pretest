@@ -4,9 +4,20 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class ItemsTableSeeder extends Seeder
 {
+    private function saveImageToStorage($url){
+        $imageData = file_get_contents($url);
+        $image = Image::make($imageData)->encode('png');
+        $filename = uniqid() . '.png';
+        $path = 'public/images/' . $filename;
+        Storage::put($path, (string) $image);
+        return 'storage/images/' . $filename;
+    }
+
     /**
      * Run the database seeds.
      *
@@ -19,7 +30,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'スタイリッシュなデザインのメンズ腕時計',
             'price'=>15000,
             'quality'=>'良好',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg'),
             'brand'=>'Rolax',
         ];
         DB::table('items')->insert($param);
@@ -29,7 +40,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'高速で信頼性の高いハードディスク',
             'price'=>5000,
             'quality'=>'目立った傷や汚れなし',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/HDD+Hard+Disk.jpg'),
             'brand'=>'西芝',
         ];
         DB::table('items')->insert($param);
@@ -39,7 +50,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'新鮮な玉ねぎ3束のセット',
             'price'=>300,
             'quality'=>'やや傷や汚れあり',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/iLoveIMG+d.jpg'),
             'brand'=>'なし',
         ];
         DB::table('items')->insert($param);
@@ -49,7 +60,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'クラシックなデザインの革靴',
             'price'=>4000,
             'quality'=>'状態が悪い',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Leather+Shoes+Product+Photo.jpg'),
             'brand'=>'',
         ];
         DB::table('items')->insert($param);
@@ -59,7 +70,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'高性能なノートパソコン',
             'price'=>45000,
             'quality'=>'良好',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Living+Room+Laptop.jpg'),
             'brand'=>'',
         ];
         DB::table('items')->insert($param);
@@ -69,7 +80,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'高音質のレコーディング用マイク',
             'price'=>8000,
             'quality'=>'目立った傷や汚れなし',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Music+Mic+4632231.jpg'),
             'brand'=>'なし',
         ];
         DB::table('items')->insert($param);
@@ -79,7 +90,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'おしゃれなショルダーバッグ',
             'price'=>3500,
             'quality'=>'やや傷や汚れあり',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Purse+fashion+pocket.jpg'),
             'brand'=>'',
         ];
         DB::table('items')->insert($param);
@@ -89,7 +100,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'使いやすいタンブラー',
             'price'=>500,
             'quality'=>'状態が悪い',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Tumbler+souvenir.jpg'),
             'brand'=>'なし',
         ];
         DB::table('items')->insert($param);
@@ -99,7 +110,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'手動のコーヒーミル',
             'price'=>4000,
             'quality'=>'良好',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Waitress+with+Coffee+Grinder.jpg'),
             'brand'=>'Starbacks',
         ];
         DB::table('items')->insert($param);
@@ -109,7 +120,7 @@ class ItemsTableSeeder extends Seeder
             'explanation'=>'便利なメイクアップセット',
             'price'=>2500,
             'quality'=>'目立った傷や汚れなし',
-            'image'=>'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg',
+            'image'=>$this->saveImageToStorage('https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/%E5%A4%96%E5%87%BA%E3%83%A1%E3%82%A4%E3%82%AF%E3%82%A2%E3%83%83%E3%83%95%E3%82%9A%E3%82%BB%E3%83%83%E3%83%88.jpg'),
             'brand'=>'',
         ];
         DB::table('items')->insert($param);

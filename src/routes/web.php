@@ -20,8 +20,6 @@ Route::get('/login',[ItemController::class,'login'])->name('login');
 Route::get('/register',[ItemController::class,'register']);
 Route::post('/register',[ItemController::class,'save'])->name('register');
 Route::get('/item/{item_id}', [ItemController::class, 'detail'])->name('detail');
-
-//仮↓
 Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}', [ItemController::class, 'buy'])->name('buy');
     Route::post('/purchase/{item_id}', [ItemController::class, 'purchase']);

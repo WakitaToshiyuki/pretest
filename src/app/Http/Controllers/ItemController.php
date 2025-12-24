@@ -9,7 +9,6 @@ use App\Models\Comment;
 use App\Models\Profile;
 use App\Models\Purchase;
 use App\Models\Category;
-// 仮↓
 use Illuminate\Support\Facades\Auth;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\Facades\Storage;
@@ -33,25 +32,9 @@ class ItemController extends Controller
         return view('index', ['items' => $items]);
     }
 
-
-
     public function login(){
         return view('auth.login');
     }
-
-    // public function check(Request $request){
-    //     $credentials=$request->only('email', 'password');
-
-    //     if(Auth::attempt($credentials)){
-    //         dd($credentials);
-    //         return redirect('/');
-    //     }
-    // }
-
-    // public function logout(){
-    //     $items=Item::all();
-    //     return redirect('/');
-    // }
 
     public function register(){
         return view('auth.register');
@@ -110,7 +93,7 @@ class ItemController extends Controller
         return view('edit',compact('user','profile',));
     }
 
-    public function update(Request $request){
+    public function update(ProfileRequest $request){
         $user = auth()->user();
         $profile = Profile::where('user_id', $user->id)->first();
         $form = [
@@ -120,6 +103,7 @@ class ItemController extends Controller
             'address' => $request->address,
             'building' => $request->building,
         ];
+
         if ($request->hasFile('image')) {
             if ($profile && $profile->image) {
                 Storage::delete($profile->image);
@@ -128,7 +112,7 @@ class ItemController extends Controller
         }else{
             $form['image'] = $profile->image ?? null;
         }
-        // unset($form['_token']);
+
         if($profile){
             $profile->update($form);
             $profile->user->update([
@@ -151,7 +135,7 @@ class ItemController extends Controller
         return view('buy',compact('item','profile','address'));
     }
 
-    public function purchase($item_id,Request $request){
+    public function purchase($item_id,purchaseRequest $request){
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $form =[
@@ -173,7 +157,7 @@ class ItemController extends Controller
         return view('address',compact('item','profile'));
     }
 
-    public function change($item_id,Request $request){
+    public function change($item_id,AddressRequest $request){
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $profile = $user->profile;
@@ -191,11 +175,9 @@ class ItemController extends Controller
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         if ($item->isLikedBy($user)) {
-            // すでにいいねしている → 削除
             $item->likes()->where('user_id', $user->id)->delete();
         } 
         else {
-            // まだいいねしていない → 追加
             $item->likes()->create([
                 'user_id' => $user->id,
             ]);
@@ -203,7 +185,7 @@ class ItemController extends Controller
         return redirect()->route('detail', ['item_id' => $item->id])->with(compact('item'));
     }
 
-    public function comment($item_id,Request $request){
+    public function comment($item_id,CommentRequest $request){
         $item = Item::findOrFail($item_id);
         $user = auth()->user();
         $form = [

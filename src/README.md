@@ -39,16 +39,21 @@ php artisan key:generate
 composer require doctrine/dbal
 ```
 
-7. マイグレーションの実行
+7. Intervention Image を取り入れる
+``` bash
+composer require intervention/image
+```
+
+8. マイグレーションの実行
 ``` bash
 php artisan migrate
 ```
 
-8. シーディングの実行
+9. シーディングの実行
 ``` bash
 php artisan db:seed
 ```
-9. シンボリックリンク作成
+10. シンボリックリンク作成
 ``` bash
 php artisan storage:link
 ```
