@@ -15,7 +15,7 @@ class ItemsTableSeeder extends Seeder
         $filename = uniqid() . '.png';
         $path = 'public/images/' . $filename;
         Storage::put($path, (string) $image);
-        return 'storage/images/' . $filename;
+        return $filename;
     }
 
     /**

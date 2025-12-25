@@ -58,6 +58,12 @@ php artisan db:seed
 php artisan storage:link
 ```
 
+※ 開発環境で Permission denied が出る場合は以下を実行してください
+docker exec -it pretest-php-1 bash
+cd /var/www
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+
 ## 使用技術(実行環境)
 - PHP8.3.0
 - Laravel8.83.27
